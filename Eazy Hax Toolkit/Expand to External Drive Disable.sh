@@ -15,7 +15,7 @@ sudo unlink /etc/samba/smb.conf
 sudo cp /etc/samba/smb.conf.bkup /etc/samba/smb.conf
 sudo /usr/sbin/service smbd stop
 unlink $HOME/RetroPie/roms; sudo umount $HOME/addonusb; sudo umount overlay
-while [ `df |grep overlay |awk '{print $1 }'|wc -l` -eq 1 ]; do
+while [ $(df |grep overlay |awk '{print $1 }'|wc -l) -eq 1 ]; do
             echo -e "\n\nOverlay Mount is still present. Waiting a few seconds and will try to dismout the drive again.\n\n"
             sleep 10
             sudo umount overlay

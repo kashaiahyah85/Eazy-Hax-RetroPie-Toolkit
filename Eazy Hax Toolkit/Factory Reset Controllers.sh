@@ -5,10 +5,13 @@ echo "This will wipe out all controller configurations, and reset everything to 
 sleep 4
 echo "You will need to reconfigure all of your controllers."
 sleep 2
-rm /opt/retropie/configs/all/retroarch-joypads/*
+rm -f /opt/retropie/configs/all/retroarch-joypads/*
 cd /home/pi/.emulationstation/
-rm es_input.cfg
-cd /home/pi/.emulationstation/; curl -o es_input.cfg https://raw.githubusercontent.com/Shakz76/Eazy-Hax-RetroPie-Toolkit/master/cfg/es_input.cfg.bkup
+rm -f es_input.cfg
+cd /home/pi/.emulationstation/; curl -o \
+    es_input.cfg \
+    https://raw.githubusercontent.com/Shakz76/Eazy-Hax-RetroPie-Toolkit/master/cfg/es_input.cfg.bkup \
+    || exit
 
 sudo reboot
 exit

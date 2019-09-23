@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script created by Forrest to expand the roms file system to an external
 # So folks will stop getting ripped off for bigger drives on ebay.
-testdrive=`df |grep media |awk '{print $1 }'|wc -l`
+testdrive=$(df |grep media |awk '{print $1 }'|wc -l)
 if [ $testdrive -eq 0 ] ; then
 echo "No External drive detected. Exiting."
 sleep 5
@@ -11,10 +11,10 @@ echo "External Drive detected. Performing checks for NTFS filesystem."
 sleep 5
 fi
 
-EXTDR=`sudo blkid |grep -v mmc|grep ntfs`
-usb_mount=`echo $EXTDR|awk '{print $1 }'|tr -d :`
-usb_filesystem=`echo $EXTDR |grep -Po 'TYPE="\K.*?(?=")'`
-usb_uuid=`blkid -o value -s UUID $usb_mount`
+EXTDR=$(sudo blkid |grep -v mmc|grep ntfs)
+usb_mount=$(echo $EXTDR|awk '{print $1 }'|tr -d :)
+usb_filesystem=$(echo $EXTDR |grep -Po 'TYPE="\K.*?(?=")')
+usb_uuid=$(blkid -o value -s UUID $usb_mount)
 
 if [ "$usb_filesystem" != "ntfs" ] ; then
 echo "This external drive is not correctly formatted. It must be formatted using the NTFS filesystem. Please reformat it to NTFS."
@@ -36,7 +36,7 @@ sudo sh -c "cat $HOME/.currentdrive >> /etc/fstab"
 sudo umount $usb_mount
 sudo mount -a
 fi
-testdrive2=`df |grep addonusb|wc -l`
+testdrive2=$(df |grep addonusb|wc -l)
 if [ $testdrive2 -eq 0 ] ; then
 	echo -e "Something went wrong. Unable to detect that external drive mounted correctly. Exiting...."
 	sleep 5

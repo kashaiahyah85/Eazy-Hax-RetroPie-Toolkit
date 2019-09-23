@@ -1,6 +1,6 @@
 #!/bin/bash
 
-infobox= ""
+infobox=''
 infobox="${infobox}___________________________________________________________________________\n\n"
 infobox="${infobox}\n"
 infobox="${infobox}Swap Sega Genesis/Megadrive and PCE TG16/Graphics\n\n"
